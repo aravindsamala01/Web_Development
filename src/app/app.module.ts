@@ -1,16 +1,24 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SignupComponent } from './signup/signup.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router'; // Import RouterModule and Routes
+
+const routes: Routes = [
+  { path: 'signup', component: SignupComponent },
+  // Define other routes here
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes) // Add RouterModule configuration
   ],
   providers: [],
   bootstrap: [AppComponent]
