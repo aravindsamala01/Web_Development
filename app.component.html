@@ -1,0 +1,48 @@
+<!-- From here form starts -->
+<form  [formGroup]="studentForm" (ngSubmit)="onSubmit()" class="border border-2 p-3 border rounded-4 bg-black text-white">
+  <h1 class="text-bold bi bi-person-fill m-4 p-3 border rounded-2">User Registration</h1>
+  <div>
+      <label class="form-label fw-bold"  >Name:</label>
+      <input class="form-control " id="name" formControlName="name" name="username">
+  </div>
+  <div>
+      <label class="form-label fw-bold mt-3">Phone:</label>
+      <input class="form-control " id="phone" formControlName="phone" name="phone">
+  </div>
+  <div >
+    <label class="form-label fw-bold mt-3" for="email">Email:</label>
+    <input class="form-control" type="email" id="email" formControlName="email" />
+  </div>
+  <div >
+    <label class="form-label fw-bold mt-3 " for="address">Address:</label>
+    <input class="form-control" type="text  " id="address" formControlName="address" />
+  </div>
+  <div >
+    <label class="form-label fw-bold mt-3 " for="university">University:</label>
+    <input class="form-control" type="text" id="university" formControlName="university" />
+
+  </div>
+  <div>
+      <button type="submit" [disabled]="studentForm.invalid" class="btn btn-warning mt-2 w-100 fw-bold">Register</button>
+      <p>* please Fill all details </p>
+      <label class="form-label mt-3">Already have account  <span><a href="#">Sign in</a></span></label>
+  </div>
+</form>
+
+<!-- User Detailer Container It Displays the all the inputs of end user's. -->
+<ng-container *ngFor="let userList of signInUserDetails">
+  <div class="user-container text-white" >
+    <ul>
+      <li>
+        <span>Name : {{userList.name}}</span><br>
+        <span>phone : {{userList.phone}}</span><br>
+        <span>Email : {{userList.email}}</span><br>
+        <span>Address : {{userList.address}}</span><br>
+        <span>University : {{userList.university}}</span>
+      </li>
+    </ul>
+
+  </div>
+</ng-container>
+
+
