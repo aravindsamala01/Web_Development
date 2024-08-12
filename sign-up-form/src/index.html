@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="userApp">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form</title>
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <!-- ngRoute Module -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+    <script>
+        var app = angular.module('userApp', ['ngRoute']);
+
+        app.config(function($routeProvider) {
+            $routeProvider
+                .when('/form', {
+                    templateUrl: 'form.html',
+                    controller: 'FormController'
+                })
+                .when('/result', {
+                    templateUrl: 'result.html',
+                    controller: 'ResultController'
+                })
+                .otherwise({
+                    redirectTo: '/form'
+                });
+        });
+
+        app.controller('FormController', function($scope, $location) {
+            $scope.user = {};
+
+            $scope.submitForm = function() {
+                if ($scope.userForm.$valid) {
+                    $location.path('/result').search($scope.user);
+                }
+            };
+        });
+
+        app.controller('ResultController', function($scope, $location) {
+            $scope.user = $location.search();
+        });
+    </script>
+   
+</head>
+<body>
+    <div class="nebula-background">
+        <!-- Example stars -->
+        <div class="star" style="top: 10%; left: 20%;"></div>
+        <div class="star" style="top: 40%; left: 50%;"></div>
+        <div class="star" style="top: 70%; left: 80%;"></div>
+        <!-- Add more stars as needed -->
+    </div>
+    <div class="container">
+        <div class="form-container" ng-view></div>
+    </div>
+
+    <script type="text/ng-template" id="form.html">
+        <h2>User Sign Up Form</h2>
+        <form name="userForm" ng-submit="submitForm()" novalidate>
+            <!-- Full Name -->
+            <div class="form-group">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" ng-model="user.fullName" required ng-minlength="2" ng-maxlength="100">
+                <span class="hint">Enter your full name (at least 2 characters).</span>
+                <span class="error" ng-show="userForm.fullName.$touched && userForm.fullName.$invalid">
+                    <span ng-show="userForm.fullName.$error.required">Full Name is required.</span>
+                    <span ng-show="userForm.fullName.$error.minlength">Full Name is too short.</span>
+                    <span ng-show="userForm.fullName.$error.maxlength">Full Name is too long.</span>
+                </span>
+            </div>
+
+            <!-- Email Address -->
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" ng-model="user.email" required>
+                <span class="hint">Enter a valid email address (e.g., example@domain.com).</span>
+                <span class="error" ng-show="userForm.email.$touched && userForm.email.$invalid">
+                    <span ng-show="userForm.email.$error.required">Email Address is required.</span>
+                    <span ng-show="userForm.email.$error.email">Invalid Email Address.</span>
+                </span>
+            </div>
+
+            <!-- Phone Number -->
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="tel" id="phoneNumber" ng-model="user.phoneNumber" required ng-pattern="/^\d{10}$/">
+                <span class="hint">Enter a 10-digit phone number (e.g., 1234567890).</span>
+                <span class="error" ng-show="userForm.phoneNumber.$touched && userForm.phoneNumber.$invalid">
+                    <span ng-show="userForm.phoneNumber.$error.required">Phone Number is required.</span>
+                    <span ng-show="userForm.phoneNumber.$error.pattern">Phone Number must be 10 digits.</span>
+                </span>
+            </div>
+            <!-- Address -->
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" id="address" ng-model="user.address" required>
+                <span class="hint">Enter your full address.</span>
+                <span class="error" ng-show="userForm.address.$touched && userForm.address.$invalid">
+                    <span ng-show="userForm.address.$error.required">Address is required.</span>
+                </span>
+            </div>
+            <!-- University -->
+            <div class="form-group">
+                <label for="university">University:</label>
+                <input type="text" id="university" ng-model="user.university" required>
+                <span class="hint">Enter the name of your university.</span>
+                <span class="error" ng-show="userForm.university.$touched && userForm.university.$invalid">
+                    <span ng-show="userForm.university.$error.required">University is required.</span>
+                </span>
+            </div>
+
+
+            <!-- Password -->
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" ng-model="user.password" required ng-minlength="8">
+                <span class="hint">Password must be at least 8 characters long.</span>
+                <span class="error" ng-show="userForm.password.$touched && userForm.password.$invalid">
+                    <span ng-show="userForm.password.$error.required">Password is required.</span>
+                    <span ng-show="userForm.password.$error.minlength">Password must be at least 8 characters.</span>
+                </span>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" ng-model="user.confirmPassword" required
+                    ng-pattern="user.password">
+                <span class="hint">Re-enter your password to confirm.</span>
+                <span class="error" ng-show="userForm.confirmPassword.$touched && userForm.confirmPassword.$invalid">
+                    <span ng-show="userForm.confirmPassword.$error.required">Confirm Password is required.</span>
+                    <span ng-show="userForm.confirmPassword.$error.pattern">Passwords do not match.</span>
+                </span>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </script>
+
+    <script type="text/ng-template" id="result.html">
+        <h2>User Details</h2>
+        <p><strong>Full Name:</strong> {{user.fullName}}</p>
+        <p><strong>Email Address:</strong> {{user.email}}</p>
+        <p><strong>Phone Number:</strong> {{user.phoneNumber}}</p>
+        <p><strong>Address :</strong> {{user.address}}</p>
+        <p><strong>University :</strong> {{user.university}}</p>
+        <p><strong>Password :</strong> {{user.password}}</p>
+    </script>
+</body>
+</html>
