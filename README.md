@@ -1,8 +1,8 @@
-***Sign-Up-Form***
+#Sign-Up-Form#
 
 This project is a web application featuring a modern, animated form with a dynamic background. It uses HTML, CSS, and animations to create an engaging user experience.
 
-**Project Structure**
+##Project Structure##
 
 -   `index.html`: The main HTML file that defines the structure of the web page.
 -   `styles.css`: The stylesheet that applies styling and animations to the web page.
