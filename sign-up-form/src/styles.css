@@ -29,7 +29,7 @@ body {
     padding: 20px;
     box-sizing: border-box;
     overflow-y: auto; /* Enable vertical scrolling */
-    background: rgba(255, 255, 255, 0.1); /* Light background with transparency for contrast */
+    background: rgba(0, 0, 0, 0.1); /* Light background with transparency for contrast */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8); /* Enhance shadow for better visibility */
     position: relative;
     border-radius: 10px;
@@ -83,13 +83,13 @@ body {
 }
 
 .form-container::-webkit-scrollbar-thumb {
-    background: #555; /* Darker color for the thumb */
+    background: #000000; /* Darker color for the thumb */
     border-radius: 10px; /* Rounded corners for the thumb */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Shadow effect for better visibility */
 }
 
 .form-container::-webkit-scrollbar-thumb:hover {
-    background: #777; /* Lighter color on hover */
+    background: #000000; /* Lighter color on hover */
 }
 
 /* Form Header */
