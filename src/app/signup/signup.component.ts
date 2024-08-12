@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -6,36 +6,39 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit {
+
   signupForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit(): void {
     this.signupForm = this.fb.group({
-      name: ['', [Validators.required, this.nameValidator]],
+      name: ['', [Validators.required, this.validateName]],
       email: ['', [Validators.required, Validators.email]],
-      mobile: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]], // 10-digit number
+      mobile: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+      address: ['', Validators.required],
+      university: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required]
+      confirmPassword: ['', Validators.required],
     }, { validator: this.passwordMatchValidator });
   }
 
-  nameValidator(control: any) {
-    const namePattern = /^[a-zA-Z\s]*$/;
-    if (!namePattern.test(control.value)) {
-      return { invalidName: true };
+  validateName(control: any): { [key: string]: boolean } | null {
+    const nameRegex = /^[a-zA-Z\s]+$/;
+    if (!control.value.match(nameRegex)) {
+      return { 'invalidName': true };
     }
     return null;
   }
 
-  passwordMatchValidator(formGroup: FormGroup) {
-    return formGroup.get('password')?.value === formGroup.get('confirmPassword')?.value
-      ? null : { mismatch: true };
+  passwordMatchValidator(form: FormGroup): { [key: string]: boolean } | null {
+    return form.get('password').value === form.get('confirmPassword').value ? null : { 'mismatch': true };
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.signupForm.valid) {
-      alert('Signup completed');
-      // Further processing here (e.g., form submission to a server)
+      console.log(this.signupForm.value);
     }
   }
 }
