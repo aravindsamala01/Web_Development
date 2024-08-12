@@ -18,6 +18,7 @@ This project is a web application featuring a modern, animated form with a dynam
 To view and test the project locally, follow these steps:
 
  ### 1.  Set Up the Project
+ 
 
     -   **Clone the Repository**: If you're cloning from a repository, use:
 
@@ -32,6 +33,7 @@ To view and test the project locally, follow these steps:
         -   `styles.css`
 ### 2.  Open the Project in a Browser
 
+
     -   **Using File Explorer/Finder**:
 
         -   Navigate to your project directory.
@@ -42,6 +44,7 @@ To view and test the project locally, follow these steps:
         -   Navigate to your project directory using `cd` command, e.g., `cd path/to/project-root`.
         -   Use the command `start index.html` (Windows) or `open index.html` (Mac) to open it in the default browser.
 ### 3.  Use a Local Server (Optional but Recommended)
+
 
     -   **Using `http-server` (Node.js)**:
 
