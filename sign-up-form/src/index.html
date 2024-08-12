@@ -91,6 +91,25 @@
                     <span ng-show="userForm.phoneNumber.$error.pattern">Phone Number must be 10 digits.</span>
                 </span>
             </div>
+            <!-- Address -->
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" id="address" ng-model="user.address" required>
+                <span class="hint">Enter your full address.</span>
+                <span class="error" ng-show="userForm.address.$touched && userForm.address.$invalid">
+                    <span ng-show="userForm.address.$error.required">Address is required.</span>
+                </span>
+            </div>
+            <!-- University -->
+            <div class="form-group">
+                <label for="university">University:</label>
+                <input type="text" id="university" ng-model="user.university" required>
+                <span class="hint">Enter the name of your university.</span>
+                <span class="error" ng-show="userForm.university.$touched && userForm.university.$invalid">
+                    <span ng-show="userForm.university.$error.required">University is required.</span>
+                </span>
+            </div>
+
 
             <!-- Password -->
             <div class="form-group">
@@ -124,6 +143,8 @@
         <p><strong>Full Name:</strong> {{user.fullName}}</p>
         <p><strong>Email Address:</strong> {{user.email}}</p>
         <p><strong>Phone Number:</strong> {{user.phoneNumber}}</p>
+        <p><strong>Address :</strong> {{user.address}}</p>
+        <p><strong>University :</strong> {{user.university}}</p>
         <p><strong>Password :</strong> {{user.password}}</p>
     </script>
 </body>

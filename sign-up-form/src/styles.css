@@ -29,10 +29,11 @@ body {
     padding: 20px;
     box-sizing: border-box;
     overflow-y: auto; /* Enable vertical scrolling */
-    background: rgba(0, 0, 0, 0.7); /* More transparent dark background */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    background: rgba(255, 255, 255, 0.1); /* Light background with transparency for contrast */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8); /* Enhance shadow for better visibility */
     position: relative;
     border-radius: 10px;
+    border: 1px solid #f1c40f; /* Bright border for better visibility */
 }
 
 /* Nebula Background */
