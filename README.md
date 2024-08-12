@@ -20,25 +20,25 @@ To view and test the project locally, follow these steps:
  ### 1.  Set Up the Project
  
 
-    -   **Clone the Repository**: If you're cloning from a repository, use:
+   -   **Clone the Repository**: If you're cloning from a repository, use:
 
         bash
 
         `git clone <repository-url>
         cd project-root`
 
-    -   **Ensure Required Files Are Present**:
+   -   **Ensure Required Files Are Present**:
 
         -   `index.html`
         -   `styles.css`
 ### 2.  Open the Project in a Browser
 
 
-    -   **Using File Explorer/Finder**:
+   -   **Using File Explorer/Finder**:
 
         -   Navigate to your project directory.
         -   Double-click `index.html` to open it in your default web browser.
-    -   **Using Terminal/Command Line**:
+   -   **Using Terminal/Command Line**:
 
         -   Open Terminal (Mac/Linux) or Command Prompt/PowerShell (Windows).
         -   Navigate to your project directory using `cd` command, e.g., `cd path/to/project-root`.
@@ -46,7 +46,7 @@ To view and test the project locally, follow these steps:
 ### 3.  Use a Local Server (Optional but Recommended)
 
 
-    -   **Using `http-server` (Node.js)**:
+   -   **Using `http-server` (Node.js)**:
 
         -   Install `http-server` globally if you haven't yet:
 
@@ -57,7 +57,7 @@ To view and test the project locally, follow these steps:
             `http-server`
 
         -   Open your browser and go to `http://localhost:8080`.
-    -   **Using Python (Built-in Server)**:
+   -   **Using Python (Built-in Server)**:
 
         -   If you have Python installed, navigate to your project directory.
         -   For Python 3:
