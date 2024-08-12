@@ -1,4 +1,4 @@
-**Sign-Up-Form**
+***Sign-Up-Form***
 
 This project is a web application featuring a modern, animated form with a dynamic background. It uses HTML, CSS, and animations to create an engaging user experience.
 
